@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 
 const postSchema = new mongoose.Schema({
+    postBody:{
+        type: String,
+    },
     likes:[{
         type: mongoose.Schema.Types.ObjectId,
         ref : "user",

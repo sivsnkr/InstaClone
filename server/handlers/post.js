@@ -32,3 +32,24 @@ exports.deletePost = async function(req,res,next){
         })
     }
 }
+
+exports.addCommentOnPost = async function(req,res,next){
+    try{
+        let{id,p_id} = req.params;
+        let body = req.body.body;
+        const findPost = await db.post.findById(p_id);
+        //creating the comment body
+        const comment = {
+            commentor:id,
+            body:body,
+        }
+        findPost.comments.push(comment);
+        let post = findPost.save();
+        return res.status(200).json(post);
+    }catch(err){
+        next({
+            status:400,
+            message:"Couldn't Add the comment"
+        })
+    }
+}

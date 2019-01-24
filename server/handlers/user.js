@@ -8,7 +8,7 @@ exports.signup = async function(req,res,next){
         return next({
             ...err,
             status: 400,
-            message: "Something went wrong while Signing up, Please try again",
+            message: "Username or Email already exist",
         })
     }
 }

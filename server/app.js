@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express"),
     error = require("./handlers/Error"),
     cors = require("cors"),

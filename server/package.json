@@ -9,6 +9,8 @@
   "author": "Shiv Shankar",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.4.0"
   }
 }

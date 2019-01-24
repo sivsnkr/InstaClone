@@ -44,7 +44,7 @@ exports.addCommentOnPost = async function(req,res,next){
             body:body,
         }
         findPost.comments.push(comment);
-        let post = findPost.save();
+        let post = await findPost.save();
         return res.status(200).json(post);
     }catch(err){
         next({

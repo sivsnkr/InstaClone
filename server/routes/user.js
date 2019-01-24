@@ -3,6 +3,6 @@ const express = require("express"),
     auth = require("../handlers/user");
 
 app.post("/signup",auth.signup);
-//app.post("/signin",auth.signin);
+app.post("/signin",auth.signin);
 
 module.exports = app;

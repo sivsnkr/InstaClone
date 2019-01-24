@@ -24,6 +24,34 @@ exports.signup = async function(req,res,next){
     }
 }
 
-exports.signin = function(req,res,next){
-    //signin will be here
+exports.signin = async function(req,res,next){
+    try{
+        const {email,password} = req.body;
+        let user = await db.user.findOne({email: email});
+        let passwordCheck = await user.comparePassword(password);
+        if(passwordCheck){
+            const {_id,username,email} = user;
+            const token = jwtToken.sign({
+                _id,
+                username,
+                email
+            },process.env.SECRET_KEY);
+            return res.status(200).json({
+                _id,
+                username,
+                email,
+                token
+            })
+        }else{
+            return next({
+                status: 401,
+                message: "wrong username or password",
+            })
+        }
+    }catch(err){
+        return next({
+            status:401,
+            message: "Something went wrong while sign in",
+        })
+    }
 }

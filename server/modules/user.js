@@ -32,24 +32,22 @@ const userSchema = new mongoose.Schema({
     }]
 })
 
-userSchema.pre("save",function(next){
-    if(!this.isModified(this.password)){
-        next();
+userSchema.pre("save",async function(next){
+    if(!this.isModified("password")){
+        return next();
     }else{
-        const hashedPassword = bcrypt.hash(this.password,10);
+        const hashedPassword = await bcrypt.hash(this.password,10);
         this.password = hashedPassword;
+        return next();
     }
 })
 
-userSchema.methods.comparePassword = function(input,next){
-    const compare = bcrypt.compare(input,this.password);
-    if(compare){
-        next();
-    }else{
-        next({
-            status: 400,
-            message: "Wrong username/password",
-        })
+userSchema.methods.comparePassword = async function(input,next){
+    try{
+        const compare = await bcrypt.compare(input,this.password);
+        return compare;
+    }catch(err){
+        return next(err);
     }
 }
 

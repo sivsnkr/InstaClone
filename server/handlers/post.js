@@ -53,3 +53,20 @@ exports.addCommentOnPost = async function(req,res,next){
         })
     }
 }
+
+exports.deleteCommentOnPost = async function(req,res,next){
+    try{
+        const{p_id,comnt_id} = req.params;
+        let post = await db.post.findById(p_id);
+        let comment = post.comments.filter(comment=>comment._id!=comnt_id);
+        post.comments = comment;
+        let savedPost = await post.save();
+        return res.status(200).json(savedPost);
+
+    }catch(err){
+        return next({
+            status:400,
+            message: "Error Occurred while Deleting Comment",
+        })
+    }
+}

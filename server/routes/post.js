@@ -10,4 +10,5 @@ app.post("/:p_id/add_comment",post.addCommentOnPost);
 app.delete("/:p_id/delete_comment/:comnt_id",post.deleteCommentOnPost);
 //post for likeing the post
 app.get("/:p_id",post.likePost);
+app.delete("/:p_id",post.unlikePost);
 module.exports = app;

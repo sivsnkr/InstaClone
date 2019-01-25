@@ -85,3 +85,18 @@ exports.likePost = async function(req,res,next){
         })
     }
 }
+
+exports.unlikePost = async function(req,res,next){
+    try{
+        let{id,p_id} = req.params;
+        let post = await db.post.findById(p_id);
+        post.likes.remove(id);
+        let savedPost = await post.save();
+        return res.status(200).json(savedPost);
+    }catch(err){
+        return next({
+            status: 400,
+            message: "Something went wrong while Liking the Post",
+        })
+    }
+}

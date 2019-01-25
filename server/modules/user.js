@@ -18,16 +18,24 @@ const userSchema = new mongoose.Schema({
     },
     following:[{
         type: mongoose.Schema.Types.ObjectId,
+        ref:"user",
     }],
     following:[{
         type: mongoose.Schema.Types.ObjectId,
+        ref:"user",
     }],
     messageSent:[{
-        type: mongoose.Schema.Types.ObjectId,
+        sentTo:{
+            type: mongoose.Schema.Types.ObjectId,
+            ref:"user",
+        },
         body: String,
     }],
     messageRecived:[{
-        type: mongoose.Schema.Types.ObjectId,
+        recivedFrom:{
+            type: mongoose.Schema.Types.ObjectId,
+            ref:"user",
+        },
         body: String,
     }]
 })

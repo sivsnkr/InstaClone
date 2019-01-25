@@ -6,7 +6,7 @@ exports.addMessage = async function(req,res,next){
         const messageBody = req.body.message;
         const sender = await db.user.findById(id);
         sender.messageSent.push({
-            sentTo: reciver_id,
+            sentTo: reciver_id, 
             body: messageBody,
         });
         await sender.save();

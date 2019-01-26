@@ -6,5 +6,5 @@ import post from "./post";
 export default combineReducer({
     user,
     post,
-    error, 
+    error,
 });

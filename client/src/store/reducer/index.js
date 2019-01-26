@@ -1,9 +1,9 @@
-import {combineReducer} from "redux";
+import {combineReducers} from "redux";
 import user from "./currentUser";
 import error from "./error";
 import post from "./post";
 
-export default combineReducer({
+export default combineReducers({
     user,
     post,
     error,

@@ -28,3 +28,10 @@ code {
   overflow: scroll;
   border: 2px solid red;
 }
+
+.AuthForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}

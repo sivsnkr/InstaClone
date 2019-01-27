@@ -25,4 +25,6 @@ code {
   width: 90%;
   margin-right: 2%;
   margin-left: 4%;
+  overflow: scroll;
+  border: 2px solid red;
 }

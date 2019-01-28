@@ -17,7 +17,7 @@ export const Navbar = function(props){
                         <Link to="/new_message"style={{color:"#808080",marginRight:"20px",textDecoration:"none"}}>New Message</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/newPost"style={{color:"#808080",marginRight:"20px",textDecoration:"none"}}>New Post</Link>
+                        <Link to="/new_post"style={{color:"#808080",marginRight:"20px",textDecoration:"none"}}>New Post</Link>
                     </li>
                     <li className="nav-item">
                         <Link to="/" onClick={()=>logout()} style={{color:"#808080",marginRight:"20px",textDecoration:"none"}}>Log Out</Link>

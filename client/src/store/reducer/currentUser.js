@@ -9,8 +9,8 @@ export default (state=defaultState,action)=>{
         case ADD_USER:
             return {
                 ...state,
-                isAuthenticated: !!Object.keys(action.user),
-                userDetail:action.user,
+                isAuthenticated: !!Object.keys(action.userData),
+                userDetail:action.userData,
             }
         case REMOVE_USER:
             return defaultState;

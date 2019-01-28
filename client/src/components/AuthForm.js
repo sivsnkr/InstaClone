@@ -7,6 +7,7 @@ export class AuthForm extends Component{
             password: "",
             email: "",
         }
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleChange = (e)=>{
         this.setState({
@@ -16,7 +17,11 @@ export class AuthForm extends Component{
     handleSubmit = (e)=>{
         e.preventDefault();
         let type = this.props.heading === "Sign Up"?"signup":"signin";
-        this.props.Authenticate(type,this.state);
+        this.props.Authenticate(type,this.state)
+        .then((res)=>{
+            console.log(this.props);
+            this.props.history.push("/");
+        })
     }
     render(){
         const {heading} = this.props;

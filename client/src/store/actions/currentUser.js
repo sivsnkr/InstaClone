@@ -20,13 +20,12 @@ export const Authenticate = function(type,data){
         return new Promise((resolve,reject)=>{
             return apiCall('post',`http://localhost:3001/api/user/${type}`,data)
                 .then(res=>{
-                    dispatch(addUser(res.data));
+                    dispatch(addUser(res));
                     localStorage.setItem("jwtToken",res.token);
                     setTokenHeader(res.token);
-                    resolve(res);
+                    return resolve(res);
                 }).catch(err=>{
                     //this will add error
-                    console.log(err);
                     return reject(err);
                 })
         })

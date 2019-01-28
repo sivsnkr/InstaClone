@@ -19,7 +19,7 @@ export class Main extends Component{
 }
 const mapStateToProps = function(state){
     return {
-        //all the required states will be here
+        currentUser: state.currentUser,
     }
 }
 

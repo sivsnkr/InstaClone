@@ -1,4 +1,5 @@
 import {ADD_USER,REMOVE_USER} from '../actionTypes';
+import {addError,removeError} from "./error";
 import {apiCall} from "../../services/api";
 import {setTokenHeader} from "../../services/api";
 
@@ -23,9 +24,11 @@ export const Authenticate = function(type,data){
                     dispatch(addUser(res));
                     localStorage.setItem("jwtToken",res.token);
                     setTokenHeader(res.token);
+                    dispatch(removeError());
                     return resolve(res);
                 }).catch(err=>{
                     //this will add error
+                    dispatch(addError(err));
                     return reject(err);
                 })
         })

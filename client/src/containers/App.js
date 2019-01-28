@@ -5,6 +5,7 @@ import Main from "../containers/Main";
 import {configureStore} from "../store";
 import Navbar from "./Navbar";
 const store = configureStore();
+
 class App extends Component {
   render() {
     return (

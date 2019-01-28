@@ -1,5 +1,20 @@
 const db = require("../modules/index");
 
+exports.fetchAllPost = async function(req,res,next){
+    try{
+        let posts = await db.post.find();
+        return res.status(200).json({
+            posts,
+        })
+    }catch(err){
+        return next({
+            ...err,
+            status: 400,
+            message: "Problem in Fetching posts",
+        })
+    }
+}
+
 exports.createPost = async function(req,res,next){
     try{
         const {url,caption} = req.body;

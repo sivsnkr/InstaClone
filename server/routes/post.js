@@ -3,6 +3,7 @@ const express = require("express"),
     post = require("../handlers/post");
 
 //all routes start here
+app.get("/",post.fetchAllPost);
 app.post("/",post.createPost);
 app.delete("/:p_id/delete",post.deletePost);
 //all routes for post comments

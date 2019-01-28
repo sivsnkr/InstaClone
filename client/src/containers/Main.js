@@ -7,10 +7,11 @@ import {AuthForm} from "../components/AuthForm";
 
 export class Main extends Component{
     render(){
-        const{Authenticate} = this.props;
+        const{Authenticate,user} = this.props;
+        const isAuthenticate = user.isAuthenticated;
         return(
             <Switch>
-                <Route exact path="/" render={(props)=><HomePage {...props}/>}/>
+                <Route exact path="/" render={(props)=><HomePage {...props} isAuthenticated={isAuthenticate}/>}/>
                 <Route exact path="/signup" render={(props)=><AuthForm heading="Sign Up" {...props} Authenticate={Authenticate}/>}/>
                 <Route exact path="/signin" render={(props)=><AuthForm heading="Sign In" {...props} Authenticate={Authenticate}/>}/>
             </Switch>
@@ -19,7 +20,7 @@ export class Main extends Component{
 }
 const mapStateToProps = function(state){
     return {
-        currentUser: state.currentUser,
+        user: state.user,
     }
 }
 

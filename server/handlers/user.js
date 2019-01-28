@@ -3,7 +3,7 @@ const db = require("../modules/index"),
 exports.signup = async function(req,res,next){
     try{
         const user = await db.user.create(req.body);
-        const{_id,username,email,followers,following,profiePic} = user;
+        const{_id,username,email,followers,following,profilePic} = user;
         const token = jwtToken.sign({
             _id,
             username,
@@ -18,7 +18,7 @@ exports.signup = async function(req,res,next){
             email,
             profilePic,
             followers:followers.length,
-            follwing:following.length,
+            following:following.length,
             token
         })
     }catch(err){

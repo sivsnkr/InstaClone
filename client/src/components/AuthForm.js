@@ -1,12 +1,11 @@
 import React,{Component} from "react";
-
 export class AuthForm extends Component{
     constructor(props){
         super(props);
         this.state = {
-            username:null,
-            password: null,
-            email: null,
+            username:"",
+            password: "",
+            email: "",
         }
     }
     handleChange = (e)=>{
@@ -16,6 +15,8 @@ export class AuthForm extends Component{
     }
     handleSubmit = (e)=>{
         e.preventDefault();
+        let type = this.props.heading === "Sign Up"?"signup":"signin";
+        this.props.Authenticate(type,this.state);
     }
     render(){
         const {heading} = this.props;

@@ -16,10 +16,15 @@ exports.signup = async function(req,res,next){
             token
         })
     }catch(err){
+        if(err.code === 11000){
+            err.message = "Username or Email already exist"
+        }else{
+            err.message = "Cannot signup Successfully, Error occurred"
+        }
         return next({
             ...err,
             status: 400,
-            message: "Username or Email already exist",
+            message: err.message
         })
     }
 }
@@ -50,6 +55,7 @@ exports.signin = async function(req,res,next){
         }
     }catch(err){
         return next({
+            ...err,
             status:401,
             message: "Something went wrong while sign in",
         })

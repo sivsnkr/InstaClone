@@ -19,7 +19,6 @@ export class AuthForm extends Component{
         let type = this.props.heading === "Sign Up"?"signup":"signin";
         this.props.Authenticate(type,this.state)
         .then((res)=>{
-            console.log(this.props);
             this.props.history.push("/");
         })
     }

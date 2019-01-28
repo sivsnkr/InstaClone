@@ -25,7 +25,7 @@ export const logout = function(){
 export const Authenticate = function(type,data){
     return dispatch=>{
         return new Promise((resolve,reject)=>{
-            return apiCall('post',`http://localhost:3001/api/user/${type}`,data)
+            return apiCall('post',`/api/user/${type}`,data)
                 .then(res=>{
                     dispatch(addUser(res));
                     localStorage.setItem("jwtToken",res.token);

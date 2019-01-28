@@ -4,8 +4,15 @@ import {BrowserRouter as Router} from "react-router-dom";
 import Main from "../containers/Main";
 import {configureStore} from "../store";
 import Navbar from "./Navbar";
-const store = configureStore();
-
+import jwtDecode from "jwt-decode";
+import {setTokenHeader} from "../services/api";
+import {addUser} from "../store/actions/currentUser";
+export const store = configureStore();
+if(localStorage.length > 0){
+  const user = jwtDecode(localStorage.jwtToken);
+  store.dispatch(addUser(user));
+  setTokenHeader(user.token);
+}
 class App extends Component {
   render() {
     return (

@@ -2,7 +2,7 @@ import {ADD_USER,REMOVE_USER} from '../actionTypes';
 import {addError,removeError} from "./error";
 import {apiCall} from "../../services/api";
 import {setTokenHeader} from "../../services/api";
-
+import {store} from "../../containers/App";
 export const addUser = function(data){
     return {
         type:ADD_USER,
@@ -14,6 +14,12 @@ export const removeUser = function(){
     return {
         type:REMOVE_USER,
     }
+}
+
+export const logout = function(){
+    store.dispatch(removeUser());
+    localStorage.clear();
+    setTokenHeader();
 }
 
 export const Authenticate = function(type,data){

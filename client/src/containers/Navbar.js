@@ -2,6 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import logo from "../Images/instagram-logo.png";
+import {logout} from "../store/actions/currentUser";
 
 export const Navbar = function(props){
     const {isAuthenticated} = props;
@@ -14,6 +15,9 @@ export const Navbar = function(props){
                     <ul className="navbar-nav mr-auto">
                     <li className="nav-item">
                         <Link to="/new_message"style={{color:"#808080",marginRight:"20px",textDecoration:"none"}}>New Message</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/" onClick={()=>logout()} style={{color:"#808080",marginRight:"20px",textDecoration:"none"}}>Log Out</Link>
                     </li>
                 </ul>):(
                     <ul className="navbar-nav mr-auto">

@@ -3,11 +3,12 @@ const db = require("../modules/index"),
 exports.signup = async function(req,res,next){
     try{
         const user = await db.user.create(req.body);
-        const{_id,username,email,followers,following} = user;
+        const{_id,username,email,followers,following,profiePic} = user;
         const token = jwtToken.sign({
             _id,
             username,
             email,
+            profilePic,
             followers:followers.length,
             follwing:following.length,
         },process.env.SECRET_KEY);
@@ -15,6 +16,7 @@ exports.signup = async function(req,res,next){
             _id,
             username,
             email,
+            profilePic,
             followers:followers.length,
             follwing:following.length,
             token
@@ -39,11 +41,12 @@ exports.signin = async function(req,res,next){
         let user = await db.user.findOne({email: email});
         let passwordCheck = await user.comparePassword(password);
         if(passwordCheck){
-            const{_id,username,email,followers,following} = user;
+            const{_id,username,email,followers,following,profilePic} = user;
             const token = jwtToken.sign({
                 _id,
                 username,
                 email,
+                profilePic,
                 followers:followers.length,
                 follwing:following.length,
             },process.env.SECRET_KEY);
@@ -51,6 +54,7 @@ exports.signin = async function(req,res,next){
                 _id,
                 username,
                 email,
+                profilePic,
                 followers:followers.length,
                 following:following.length,
                 token

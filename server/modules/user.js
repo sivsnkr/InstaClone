@@ -2,6 +2,9 @@ const mongoose = require("mongoose"),
     bcrypt = require("bcrypt");
 
 const userSchema = new mongoose.Schema({
+    profilePic:{
+        type:String,
+    },
     email:{
         type: String,
         required: true,

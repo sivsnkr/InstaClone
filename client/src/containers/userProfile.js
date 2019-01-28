@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 class UserProfile extends Component{
     render(){
-        const {username,followers,following} = this.props.currentUser.userDetail;
+        const {username,followers,following,profiePic} = this.props.currentUser.userDetail;
         return(
             <div className="userProfile">
                 <img src={""} alt={username}></img>

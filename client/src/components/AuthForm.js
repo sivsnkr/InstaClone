@@ -6,6 +6,7 @@ export class AuthForm extends Component{
             username:"",
             password: "",
             email: "",
+            profilePic:'',
         }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -24,7 +25,7 @@ export class AuthForm extends Component{
     }
     render(){
         const {heading} = this.props;
-        const{email,password,username} = this.state;
+        const{email,password,username,profilePic} = this.state;
         return(
             <div className="AuthForm">
                 <h1>{heading}</h1>
@@ -38,9 +39,15 @@ export class AuthForm extends Component{
                         <input type="password" className="form-control" name="password" vlaue={password} onChange={this.handleChange} id="password" placeholder="Enter Password"/>
                     </div>
                     {heading==="Sign Up"&&
-                        <div className="form-group">
-                            <label htmlFor="username">Username</label>
-                            <input type="text" className="form-control" name="username" value={username}  onChange={this.handleChange} id="username" placeholder="Enter Username"/>
+                        <div>
+                            <div className="form-group">
+                                <label htmlFor="username">Username</label>
+                                <input type="text" className="form-control" name="username" value={username}  onChange={this.handleChange} id="username" placeholder="Enter Username"/>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="profilePic">Profile Image</label>
+                                <input type="text" className="form-control" name="profilePic" value={profilePic}  onChange={this.handleChange} id="profilePic" placeholder="Paste Link of Your Profile Picture"/>
+                            </div>
                         </div>
                     }
                     <button type="submit" className="btn btn-success btn-block">{heading}</button>

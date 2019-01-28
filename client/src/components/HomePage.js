@@ -12,7 +12,6 @@ export const HomePage = function(props){
                 }
             </div>
             <div className="profile">
-                <h1>All the Profile related information will be here</h1>
                 {isAuthenticated&&
                     <UserProfile/>
                 }

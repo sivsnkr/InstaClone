@@ -26,7 +26,6 @@ code {
   margin-right: 2%;
   margin-left: 4%;
   overflow: scroll;
-  border: 2px solid red;
 }
 
 .AuthForm{
@@ -39,4 +38,25 @@ code {
 .userProfile{
   width: 300px;
   height: 300px;
+}
+.img-post{
+  width: 250px;
+  height:200px;
+}
+.singlePost{
+  display: flex;
+  flex-direction: column;
+  width: 252px;
+  height:300px;
+}
+.post-bottom{
+  display: flex;
+  flex-direction: row;
+}
+
+.all-post{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }

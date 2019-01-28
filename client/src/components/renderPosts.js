@@ -5,11 +5,11 @@ export class RenderPost extends Component{
         const {url,username,likes,comments} = this.props;
         return(
             <div className="singlePost">
-                <div className="post-header">{username}</div>
-                <img src={url} alt={username}/>
+                <div className="post-header"><h5>{username}</h5></div>
+                <img className="img-post" src={url} alt={username}/>
                 <div className="post-bottom">
-                    <div>{likes} Likes</div>
-                    <div>{comments} Comments</div>
+                    <div style={{marginRight:"40px"}}>{likes} <strong>Likes</strong></div>
+                    <div>{comments}<strong> Comments</strong></div>
                 </div>
             </div>
         )

@@ -14,12 +14,12 @@ export class PostTime extends Component{
                 key={post.id}
                 url={post.url}
                 username={username}
-                likes={post.likes.length}
-                commens={post.comments.length}
+                likes={post.likes}
+                comments={post.comments}
                 />
         })
         return(
-            <div>
+            <div className="all-post">
                 {posts}
             </div>
         )

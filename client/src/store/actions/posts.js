@@ -1,13 +1,18 @@
-import {ADD_POST,REMOVE_POST} from "../actionTypes";
+import {ADD_POST,REMOVE_POST, FETCH_POST} from "../actionTypes";
 import {apiCall} from "../../services/api";
 import {addError,removeError} from "./error";
-export const addPost = function(posts){
+export const addPost = function(post){
     return {
         type: ADD_POST,
+        post
+    }
+}
+export const fetchPost = function(posts){
+    return {
+        type: FETCH_POST,
         posts
     }
 }
-
 export const removePost = function(id){
     return{
         type: REMOVE_POST,
@@ -20,7 +25,7 @@ export const fetchPosts = function(id){
         return new Promise((resolve,reject)=>{
             return apiCall("get",`/api/user/${id}/post`)
                     .then(res=>{
-                        dispatch(addPost(res.posts));
+                        dispatch(fetchPost(res.posts));
                         dispatch(removeError());
                         return resolve(res.posts);
                     }).catch(err=>{

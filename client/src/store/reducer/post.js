@@ -1,8 +1,8 @@
-import {ADD_POST,REMOVE_POST} from "../actionTypes";
+import {FETCH_POST,ADD_POST,REMOVE_POST} from "../actionTypes";
 const defaultState =[]
 export default (state=defaultState,action)=>{
     switch(action.type){
-        case ADD_POST:
+        case FETCH_POST:
             const post = action.posts.map(post=>{
                 return{
                     id: post._id,
@@ -11,7 +11,9 @@ export default (state=defaultState,action)=>{
                     comments:post.comments.length,
                 }
             })
-            return [...state,...post];
+            return [...post];
+        case ADD_POST:
+            return [...state,action.post];
         case REMOVE_POST:
             return state.filter(post=>post.id!==action.id);
         default:

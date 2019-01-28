@@ -19,7 +19,6 @@ exports.createPost = async function(req,res,next){
     try{
         const {url,caption} = req.body;
         const{id} = req.params;
-        console.log(id);
         let post = await db.post.create({
             url,
             caption,

@@ -10,7 +10,7 @@ exports.signup = async function(req,res,next){
             email,
             profilePic,
             followers:followers.length,
-            follwing:following.length,
+            following:following.length,
         },process.env.SECRET_KEY);
         return res.status(200).json({
             _id,
@@ -48,7 +48,7 @@ exports.signin = async function(req,res,next){
                 email,
                 profilePic,
                 followers:followers.length,
-                follwing:following.length,
+                following:following.length,
             },process.env.SECRET_KEY);
             return res.status(200).json({
                 _id,

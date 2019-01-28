@@ -21,6 +21,7 @@ export class AuthForm extends Component{
         this.props.Authenticate(type,this.state)
         .then((res)=>{
             this.props.history.push("/");
+            this.props.fetchPosts(res._id);
         })
     }
     render(){

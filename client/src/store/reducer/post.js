@@ -2,8 +2,8 @@ import {ADD_POST,REMOVE_POST} from "../actionTypes";
 const defaultState =[{
     id:null,
     url:null,
-    likes:0,
-    comemnts:0
+    likes:[],
+    comments:[],
 }]
 export default (state=defaultState,action)=>{
     switch(action.types){
@@ -12,8 +12,8 @@ export default (state=defaultState,action)=>{
                 return{
                     id: post._id,
                     url: post.url,
-                    likes:post.likes,
-                    comments:post.comments,
+                    likes:post.likes.length,
+                    comments:post.comments.length,
                 }
             })
             return [...state,...posts];

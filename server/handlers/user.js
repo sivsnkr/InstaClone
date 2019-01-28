@@ -3,16 +3,20 @@ const db = require("../modules/index"),
 exports.signup = async function(req,res,next){
     try{
         const user = await db.user.create(req.body);
-        const{_id,username,email} = user;
+        const{_id,username,email,followers,following} = user;
         const token = jwtToken.sign({
             _id,
             username,
-            email
+            email,
+            followers:followers.length,
+            follwing:following.length,
         },process.env.SECRET_KEY);
         return res.status(200).json({
             _id,
             username,
             email,
+            followers:followers.length,
+            follwing:following.length,
             token
         })
     }catch(err){
@@ -35,16 +39,20 @@ exports.signin = async function(req,res,next){
         let user = await db.user.findOne({email: email});
         let passwordCheck = await user.comparePassword(password);
         if(passwordCheck){
-            const {_id,username,email} = user;
+            const{_id,username,email,followers,following} = user;
             const token = jwtToken.sign({
                 _id,
                 username,
-                email
+                email,
+                followers:followers.length,
+                follwing:following.length,
             },process.env.SECRET_KEY);
             return res.status(200).json({
                 _id,
                 username,
                 email,
+                followers:followers.length,
+                following:following.length,
                 token
             })
         }else{

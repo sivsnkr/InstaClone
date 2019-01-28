@@ -1,21 +1,29 @@
 import React,{Component} from "react";
-import { connect } from "tls";
+import { connect } from "react-redux";
 import {RenderPost} from "../components/renderPosts";
 export class PostTime extends Component{
     render(){
-        const {post} = this.post;
+        const {post} = this.props;
         const {username} = this.props.user.userDetail;
-        const posts = post.map(post=>{
-            return <RenderPost 
+        const posts = post.filter(post=>{
+            if(post.id !== null){
+                return <RenderPost 
                 key={post.id}
                 url={post.url}
                 username={username}
-                likes={post.likes.length()}
-                commens={post.comments.length()}
+                likes={post.likes.length}
+                commens={post.comments.length}
                 />
+            }
         })
         return(
-            {posts}
+            <div>
+                {posts.length > 0?(
+                    <div>{posts}</div>
+                ):(
+                    <h1>There is No Posts</h1>
+                )}
+            </div>
         )
     }
 }
@@ -23,7 +31,7 @@ export class PostTime extends Component{
 const mapStateToProps = function(state){
     return{
         user: state.user,
-        posts: state.post,
+        post: state.post,
     }
 }
 

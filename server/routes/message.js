@@ -3,6 +3,6 @@ const express = require("express"),
     message = require("../handlers/message");
 
 
-app.post("/:reciver_id",message.addMessage);
+app.post("/",message.addMessage);
 
 module.exports = app;

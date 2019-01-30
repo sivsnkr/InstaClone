@@ -6,7 +6,7 @@ import {PostForm} from "../components/PostForm";
 import { HomePage } from "../components/HomePage";
 import {Authenticate} from "../store/actions/currentUser";
 import {AuthForm} from "../components/AuthForm";
-//import {Message} from "./Message";
+import {fetchPosts} from "../store/actions/posts";
 
 export class Main extends Component{
     render(){

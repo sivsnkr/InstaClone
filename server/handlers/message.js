@@ -2,15 +2,16 @@ const db = require("../modules/index");
 
 exports.addMessage = async function(req,res,next){
     try{
-        const{id,reciver_id} = req.params;
+        const{id} = req.params;
         const messageBody = req.body.message;
+        const replicent = req.body.replicentEmail;
         const sender = await db.user.findById(id);
+        const reciver = await db.user.findOne({email:replicent});
         sender.messageSent.push({
-            sentTo: reciver_id, 
+            sentTo: reciver._id, 
             body: messageBody,
         });
         await sender.save();
-        const reciver = await db.user.findById(reciver_id);
         reciver.messageRecived.push({
             recivedFrom: id,
             body: messageBody,

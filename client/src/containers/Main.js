@@ -17,7 +17,7 @@ export class Main extends Component{
                 <Route exact path="/" render={(props)=><HomePage {...props} isAuthenticated={isAuthenticate} fetchPosts={fetchPosts}/>}/>
                 <Route exact path="/signup" render={(props)=><AuthForm heading="Sign Up" {...props} fetchPosts={fetchPosts} Authenticate={Authenticate}/>}/>
                 <Route exact path="/signin" render={(props)=><AuthForm heading="Sign In" {...props} fetchPosts={fetchPosts} Authenticate={Authenticate}/>}/>
-                <Route exact path="/message" render={(props)=><MessageForm/>}/>
+                <Route exact path="/message" render={(props)=><MessageForm/>}/> 
                 <Route exact path="/new_post" render={(props)=><PostForm/>}/>
             </Switch>
         )

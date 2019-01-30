@@ -6,8 +6,9 @@ export class RenderSentMessages extends Component{
         return(
             <div className="single-message">
                 <div className="sent-to">
-                    Sent To <h4>{sentTo}</h4>
+                    Sent To <strong>{sentTo}</strong>
                 </div>
+                <hr></hr>
                 <div className="single-message-body">
                     {body}
                 </div>

@@ -61,3 +61,20 @@ code {
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
+.all-messages{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.single-message{
+  border: 2px solid grey;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  padding: 2px 7px;
+}
+

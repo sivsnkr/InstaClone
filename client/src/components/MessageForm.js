@@ -1,5 +1,4 @@
 import React,{Component} from "react";
-import {Redirect} from "react-router-dom";
 import {addMessage} from "../store/actions/message";
 import {store} from "../containers/App";
 export class MessageForm extends Component{
@@ -21,9 +20,7 @@ export class MessageForm extends Component{
         const state = store.getState();
         const id = state.user.userDetail._id;
         addMessage(id,this.state)();
-        return(
-            <Redirect to="/"/>
-        )
+        this.props.history.push("/");
     }
     render(){
         const {message,replicentEmail} = this.state;

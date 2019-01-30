@@ -12,12 +12,21 @@ export const Navbar = function(props){
             <Link to="/" className="navbar-brand">Instagram</Link>
             <div className="collapse navbar-collapse">
                 {isAuthenticated?(
-                    <ul className="navbar-nav mr-auto">
+                <ul className="navbar-nav mr-auto">
                     <li className="nav-item">
-                        <Link to="/new_message"style={{color:"#808080",marginRight:"20px",textDecoration:"none"}}>New Message</Link>
+                        <Link to="/sent_messages" style={{color:"#808080",marginRight:"20px",textDecoration:"none"}}>Sent Messages</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/recived_messages" style={{color:"#808080",marginRight:"20px",textDecoration:"none"}}>Recived Messages</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/new_message" style={{color:"#808080",marginRight:"20px",textDecoration:"none"}}>New Message</Link>
                     </li>
                     <li className="nav-item">
                         <Link to="/new_post"style={{color:"#808080",marginRight:"20px",textDecoration:"none"}}>New Post</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/all_users" style={{color:"#808080",marginRight:"20px",textDecoration:"none"}}>All Users</Link>
                     </li>
                     <li className="nav-item">
                         <Link to="/" onClick={()=>logout()} style={{color:"#808080",marginRight:"20px",textDecoration:"none"}}>Log Out</Link>

@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use("/api/user",user);
 app.use("/api/user/:id/post",post);
 //routes for sending message
-app.use("/api/user/:id/new_message",message);
+app.use("/api/user/:id/message",message);
 //setting routes ends here
 app.use(error);
 app.listen(3001,function(){

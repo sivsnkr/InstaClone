@@ -4,5 +4,7 @@ const express = require("express"),
 
 
 app.post("/",message.addMessage);
+app.get("/sentMessages",message.fetchAllSentMessages);
+app.get("/recivedMessages",message.fetchAllRecivedMessages);
 
 module.exports = app;

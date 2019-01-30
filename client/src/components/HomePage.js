@@ -6,7 +6,6 @@ export const HomePage = function(props){
     return(
         <div className="HomePage">
             <div className="post_body">
-                <h1>All the Post will be here</h1>
                 {isAuthenticated&&
                     <PostTime/>
                 }

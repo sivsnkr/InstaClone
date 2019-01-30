@@ -27,3 +27,37 @@ exports.addMessage = async function(req,res,next){
         })
     }
 }
+
+exports.fetchAllRecivedMessages = async function(req,res,next){
+    try{
+        let {id} = req.params;
+        let user = await db.user.findById(id);
+        const recivedMessage = user.messageRecived;
+        res.status(200).json({
+            messages: recivedMessage,
+        })
+    }catch(err){
+        return next({
+            ...err,
+            status: 400,
+            message: "Not able to fetch messages from Database",
+        })
+    }
+}
+
+exports.fetchAllSentMessages = async function(req,res,next){
+    try{
+        let {id} = req.params;
+        let user = await db.user.findById(id);
+        const sentMessage = user.messageSent;
+        res.status(200).json({
+            messages: sentMessage,
+        })
+    }catch(err){
+        return next({
+            ...err,
+            status: 400,
+            message: "Not able to fetch messages from Database",
+        })
+    }
+}

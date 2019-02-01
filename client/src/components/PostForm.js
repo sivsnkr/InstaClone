@@ -16,6 +16,10 @@ export class PostForm extends Component{
     handleSubmit = e=>{
         e.preventDefault();
         //after submit function will run here
+        this.props.addNewPost(this.props.id,this.state)
+        .then(res=>{
+            this.props.history.push("/");
+        })
     }
     render(){
         const {url,caption} = this.state;

@@ -42,16 +42,19 @@ code {
   height: 270px;
 }
 .img-post{
+  margin-left: 15%;
   width: 200px;
   height:200px;
 }
 .singlePost{
   display: flex;
   flex-direction: column;
-  width: 252px;
-  height:300px;
+  width: 350px;
+  height:350px;
+  padding-right: 40px;
 }
 .post-bottom{
+  border-top: 2px solid grey;
   display: flex;
   flex-direction: row;
 }

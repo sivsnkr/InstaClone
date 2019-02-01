@@ -22,13 +22,16 @@ export const logout = function(){
     setTokenHeader();
 }
 
-export const fetchAllUsers = function(){
+export const FetchAllUsers = function(){
     const id = store.getState().user.userDetail._id;
-    const allUsers = apiCall("get",`/api/user/${id}/alluser`)
+    var users = [];
+    apiCall("get",`/api/user/${id}`)
         .then(res=>{
-            return res;
+            res.users.forEach(element => {
+                users.push(element);
+            });
         })
-    console.log(allUsers);
+    return users;
 }
 export const Authenticate = function(type,data){
     return dispatch=>{

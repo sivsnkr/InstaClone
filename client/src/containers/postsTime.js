@@ -11,11 +11,13 @@ export class PostTime extends Component{
         const {username} = this.props.user.userDetail;
         const posts = post.map(post=>{
             return <RenderPost 
-                key={post.id}
+                key={post._id}
                 url={post.url}
                 username={username}
-                likes={post.likes}
-                comments={post.comments}
+                likes={post.likes.length}
+                comments={post.comments.length}
+                creator={post.creator}
+                caption={post.caption}
                 />
         })
         return(

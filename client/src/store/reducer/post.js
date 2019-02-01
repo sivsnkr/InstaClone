@@ -7,7 +7,7 @@ export default (state=defaultState,action)=>{
         case ADD_POST:
             return [...state,action.post];
         case REMOVE_POST:
-            return state.filter(post=>post.id!==action.id);
+            return state.filter(post=>post._id!==action.id);
         default:
             return state;
     }

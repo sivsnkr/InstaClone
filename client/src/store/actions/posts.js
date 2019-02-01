@@ -35,7 +35,16 @@ export const fetchPosts = function(id){
             })
     }
 }
-
+export const deletePost = function(id,p_id){
+    return dispatch=>{
+        return apiCall("delete",`/api/user/${id}/post/${p_id}/delete`).then(res=>{
+            dispatch(removePost(p_id));
+            dispatch(removeError());
+        }).catch(err=>{
+            dispatch(addError(err));
+        })
+    }
+}
 export const addNewPost = function(id,data){
     return dispatch=>{
         return new Promise((resolve,reject)=>{

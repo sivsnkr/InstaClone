@@ -6,6 +6,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: black;
+  color: white;
 }
 
 code {
@@ -96,4 +98,5 @@ code {
 .all-users{
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }

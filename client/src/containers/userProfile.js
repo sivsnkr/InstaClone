@@ -11,8 +11,8 @@ class UserProfile extends Component{
                 <div><h2>{username}</h2></div>
                 <img className="userProfile" src={profilePic||defaultProfile} alt={username}></img>
                 <div className="userProfile-body">
-                    <div><strong>Followers:</strong> {followers}</div>
-                    <div><strong>Following:</strong> {following}</div>
+                    <div><strong>Followers:</strong> {followers.length}</div>
+                    <div><strong>Following:</strong> {following.length}</div>
                 </div>
             </div>
         )

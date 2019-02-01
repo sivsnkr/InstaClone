@@ -9,16 +9,16 @@ exports.signup = async function(req,res,next){
             username,
             email,
             profilePic,
-            followers:followers.length,
-            following:following.length,
+            followers:followers,
+            following:following,
         },process.env.SECRET_KEY);
         return res.status(200).json({
             _id,
             username,
             email,
             profilePic,
-            followers:followers.length,
-            following:following.length,
+            followers:followers,
+            following:following,
             token
         })
     }catch(err){
@@ -47,16 +47,16 @@ exports.signin = async function(req,res,next){
                 username,
                 email,
                 profilePic,
-                followers:followers.length,
-                following:following.length,
+                followers:followers,
+                following:following,
             },process.env.SECRET_KEY);
             return res.status(200).json({
                 _id,
                 username,
                 email,
                 profilePic,
-                followers:followers.length,
-                following:following.length,
+                followers:followers,
+                following:following,
                 token
             })
         }else{
@@ -87,6 +87,46 @@ exports.allUsers = async function(req,res,next){
         return next({
             status: 400,
             message: "Error occurred while fetching users list",
+        })
+    }
+}
+
+exports.follow = async function(req,res,next){
+    try{
+        const {id,f_id} = req.params;
+        let user = await db.user.findById(id);
+        user.following.push(f_id);
+        await user.save();
+        let following = await db.user.findById(f_id);
+        following.followers.push(id);
+        await following.save();
+        return res.status(200).json({
+            message: "Followed Successfully",
+        })
+    }catch(err){
+        return next({
+            status: 400,
+            message: "Failed to follow",
+        })
+    }
+}
+
+exports.unfollow = async function(req,res,next){
+    try{
+        const {id,f_id} = req.params;
+        let user = await db.user.findById(id);
+        user.following.remove(f_id);
+        await user.save();
+        let following = await db.user.findById(f_id);
+        following.followers.remove(id);
+        await following.save();
+        return res.status(200).json({
+            message: "Unfollowed Successfully",
+        })
+    }catch(err){
+        return next({
+            status: 400,
+            message: "Failed to unfollow",
         })
     }
 }

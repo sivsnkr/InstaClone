@@ -1,6 +1,7 @@
 import React,{Component} from "react";
 import {FetchAllUsers} from "../store/actions/currentUser";
-
+import {connect} from "react-redux";
+import { runInThisContext } from "vm";
 export class AllUsers extends Component{
     constructor(props){
         super(props);
@@ -19,7 +20,11 @@ export class AllUsers extends Component{
             return(
                 <div className="single-user">
                     <h2>{user}</h2>
-                    <button className="btn btn-success">Follow</button>
+                    {
+                        this.props.user.userDetail.following.indexOf(user._id) > 0?(
+                            <button className="btn btn-danger">Unfollow</button>
+                        ):(<button className="btn btn-success">Follow</button>)
+                    }
                 </div>
             )
         })
@@ -30,3 +35,11 @@ export class AllUsers extends Component{
         )
     }
 }
+
+const mapStateToProps = function(state){
+    return{
+        user: state.user,
+    }
+}
+
+export default connect(mapStateToProps,null)(AllUsers);

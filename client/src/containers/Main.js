@@ -4,7 +4,7 @@ import {Route,withRouter,Switch} from "react-router-dom";
 import {MessageForm} from "../components/MessageForm";
 import {PostForm} from "../components/PostForm";
 import {HomePage} from "../components/HomePage";
-import {AllUsers} from "../components/AllUsesrs";
+import AllUsers from "./AllUsesrs";
 import {Authenticate} from "../store/actions/currentUser";
 import {AuthForm} from "../components/AuthForm";
 import {fetchPosts,addNewPost} from "../store/actions/posts";

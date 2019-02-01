@@ -50,6 +50,8 @@ code {
   flex-direction: column;
   width: 350px;
   height:350px;
+  margin-bottom: 30px;
+  overflow: scroll;
   padding-right: 40px;
 }
 .post-bottom{
@@ -81,3 +83,17 @@ code {
   padding: 2px 7px;
 }
 
+.single-user{
+  display: flex;
+  flex-direction: row;
+  width: 27%;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px auto;
+  border-right: 1px solid grey;
+}
+
+.all-users{
+  display: flex;
+  flex-direction: row;
+}

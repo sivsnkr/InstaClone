@@ -1,18 +1,32 @@
-import React from "react";
+import React,{Component} from "react";
 import {FetchAllUsers} from "../store/actions/currentUser";
-export const AllUsers = function(){
-    var users = FetchAllUsers();
-    users = users.map(user=>{
+
+export class AllUsers extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            users: [],
+        }
+    }
+    render(){
+        FetchAllUsers()
+        .then(res=>{
+            this.setState({
+                users:res,
+            })
+        })
+        const users = this.state.users.map(user=>{
+            return(
+                <div className="single-user">
+                    <h2>{user}</h2>
+                    <button className="btn btn-success">Follow</button>
+                </div>
+            )
+        })
         return(
-            <div className="single-user">
-                <h4>{user}</h4>
-                <button className="btn btn-primary">Follow</button>
+            <div className="all-users">
+                {users}
             </div>
         )
-    })
-    return (
-        <div>
-            {users}
-        </div>
-    )
+    }
 }

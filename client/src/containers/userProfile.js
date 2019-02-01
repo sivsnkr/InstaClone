@@ -8,11 +8,11 @@ class UserProfile extends Component{
         const {username,followers,following,profilePic} = this.props.currentUser.userDetail;
         return(
             <div className="userProfile">
+                <div><h2>{username}</h2></div>
                 <img className="userProfile" src={profilePic||defaultProfile} alt={username}></img>
                 <div className="userProfile-body">
-                    <div>Username: {username}</div>
-                    <div>Followers: {followers}</div>
-                    <div>Following: {following}</div>
+                    <div><strong>Followers:</strong> {followers}</div>
+                    <div><strong>Following:</strong> {following}</div>
                 </div>
             </div>
         )

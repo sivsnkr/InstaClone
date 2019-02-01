@@ -24,14 +24,12 @@ export const logout = function(){
 
 export const FetchAllUsers = function(){
     const id = store.getState().user.userDetail._id;
-    var users = [];
-    apiCall("get",`/api/user/${id}`)
+    return new Promise((resolve,reject)=>{
+        return apiCall("get",`/api/user/${id}`)
         .then(res=>{
-            res.users.forEach(element => {
-                users.push(element);
-            });
+            return resolve(res.users);
         })
-    return users;
+    })
 }
 export const Authenticate = function(type,data){
     return dispatch=>{

@@ -7,7 +7,8 @@ import { HomePage } from "../components/HomePage";
 import {Authenticate} from "../store/actions/currentUser";
 import {AuthForm} from "../components/AuthForm";
 import {fetchPosts} from "../store/actions/posts";
-import {SentMessages} from "../components/messages";
+import {SentMessages} from "../components/sentMessages";
+import {RecivedMessages} from "../components/recivedMessages";
 
 export class Main extends Component{
     render(){
@@ -21,6 +22,7 @@ export class Main extends Component{
                 <Route exact path="/new_message" render={(props)=><MessageForm {...props}/>}/>
                 <Route exact path="/new_post" render={(props)=><PostForm/>}/>
                 <Route exact path="/sent_messages" render={(props)=><SentMessages/>}/>
+                <Route exact path="/recived_messages" render={(props)=><RecivedMessages/>}/>
             </Switch>
         )
     }

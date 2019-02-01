@@ -1,7 +1,8 @@
-import React ,{Component} from "react";
-import {fetchSentMessages} from "../store/actions/message";
+import React,{Component} from "react";
+import {fetchRecivedMessages} from "../store/actions/message";
 import {RenderSentMessages} from "./renderSentMessages";
-export class SentMessages extends Component{
+
+export class RecivedMessages extends Component{
     constructor(props){
         super(props);
         this.state = {
@@ -9,13 +10,14 @@ export class SentMessages extends Component{
         }
     }
     render(){
-        fetchSentMessages()().then(res=>{
-            this.setState({messages:res.messages})
+        fetchRecivedMessages()().then(res=>{
+            this.setState({messages:res.messages});
         });
         let messages = this.state.messages.map(message=><RenderSentMessages
             key={message._id}
-            sentTo={message.sentTo}
+            Form={message.recivedFrom}
             body={message.body}
+            what="Recived From "
             />)
         return(
             <div className="all-messages">

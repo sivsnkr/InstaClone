@@ -78,7 +78,10 @@ exports.allUsers = async function(req,res,next){
     try{
         let users = await db.user.find();
         users = users.map(user=>{
-            return user.username;
+            return {
+                username:user.username,
+                id: user._id,
+            }
         })
         return res.status(200).json({
             users,
@@ -95,11 +98,15 @@ exports.follow = async function(req,res,next){
     try{
         const {id,f_id} = req.params;
         let user = await db.user.findById(id);
-        user.following.push(f_id);
-        await user.save();
+        if(user.following.indexOf(f_id) < 0){
+            user.following.push(f_id);
+            await user.save();
+        }
         let following = await db.user.findById(f_id);
-        following.followers.push(id);
-        await following.save();
+        if(following.followers.indexOf(id) < 0){
+            following.followers.push(id);
+            await following.save();
+        }
         return res.status(200).json(user)
     }catch(err){
         return next({

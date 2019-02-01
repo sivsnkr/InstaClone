@@ -1,7 +1,8 @@
 import React,{Component} from "react";
 import {FetchAllUsers} from "../store/actions/currentUser";
 import {connect} from "react-redux";
-import {follow,unfollow} from "../store/actions/currentUser";
+import {handle_followAnd_unfollow} from "../store/actions/currentUser";
+import {RenderUser} from "../components/renderUser";
 export class AllUsers extends Component{
     constructor(props){
         super(props);
@@ -9,26 +10,33 @@ export class AllUsers extends Component{
             users: [],
         }
     }
-    handleClick = (e,id,f_id)=>{
-
+    handleClick = (e,id)=>{
+        e.preventDefault();
+        this.props.handle_followAnd_unfollow(e.target.name,id,e.target.value)
+        .then(res=>{
+        })
     }
-    render(){
+    componentDidMount(){
         FetchAllUsers()
         .then(res=>{
+            let users = res.filter(user=>user.id!==this.props.user.userDetail._id);
             this.setState({
-                users:res,
+                users,
             })
         })
+    }
+    render(){
         const users = this.state.users.map(user=>{
+            const {id,username} = user;
             return(
-                <div className="single-user">
-                    <h2>{user}</h2>
-                    {
-                        this.props.user.userDetail.following.indexOf(user._id) > 0?(
-                            <button onClick={(e)=>this.handleClick(e,this.props.user.userDetail._id,user._id)} className="btn btn-danger" name="unfollow">Unfollow</button>
-                        ):(<button onClick={(e)=>this.handleClick(e,this.props.user.userDetail._id,user._id)} name="follow" className="btn btn-success">Follow</button>)
-                    }
-                </div>
+                <RenderUser
+                key={id}
+                id={id}
+                username={username}
+                following={this.props.user.userDetail.following}
+                _id={this.props.user.userDetail._id}
+                handleClick={this.handleClick}
+                />
             )
         })
         return(
@@ -45,4 +53,4 @@ const mapStateToProps = function(state){
     }
 }
 
-export default connect(mapStateToProps,null)(AllUsers);
+export default connect(mapStateToProps,{handle_followAnd_unfollow})(AllUsers);

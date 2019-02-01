@@ -32,29 +32,13 @@ export const FetchAllUsers = function(){
     })
 }
 
-export const follow = function(id,f_id){
+export const handle_followAnd_unfollow = function(type,id,f_id){
     return dispatch=>{
         return new Promise((resolve,reject)=>{
-            return apiCall('get',`/api/user/${id}/follow/${f_id}`)
+            return apiCall('get',`/api/user/${id}/${type}/${f_id}`)
                     .then(res=>{
                         dispatch(addUser(res));
-                        dispatch(removeError);
-                        return resolve(res);
-                    }).catch(err=>{
-                        dispatch(addError(err));
-                        return reject(err);
-                    })
-        })
-    }
-}
-
-export const unfollow = function(id,f_id){
-    return dispatch=>{
-        return new Promise((resolve,reject)=>{
-            return apiCall('get',`/api/user/${id}/unfollow/${f_id}`)
-                    .then(res=>{
-                        dispatch(addUser(res));
-                        dispatch(removeError);
+                        dispatch(removeError());
                         return resolve(res);
                     }).catch(err=>{
                         dispatch(addError(err));

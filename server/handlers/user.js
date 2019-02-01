@@ -73,3 +73,20 @@ exports.signin = async function(req,res,next){
         })
     }
 }
+
+exports.allUsers = async function(req,res,next){
+    try{
+        let users = await db.user.find();
+        users = users.map(user=>{
+            return user.username;
+        })
+        return res.status(200).json({
+            users,
+        })
+    }catch(err){
+        return next({
+            status: 400,
+            message: "Error occurred while fetching users list",
+        })
+    }
+}

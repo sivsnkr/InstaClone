@@ -22,6 +22,14 @@ export const logout = function(){
     setTokenHeader();
 }
 
+export const fetchAllUsers = function(){
+    const id = store.getState().user.userDetail._id;
+    const allUsers = apiCall("get",`/api/user/${id}/alluser`)
+        .then(res=>{
+            return res;
+        })
+    console.log(allUsers);
+}
 export const Authenticate = function(type,data){
     return dispatch=>{
         return new Promise((resolve,reject)=>{

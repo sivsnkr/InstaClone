@@ -100,9 +100,7 @@ exports.follow = async function(req,res,next){
         let following = await db.user.findById(f_id);
         following.followers.push(id);
         await following.save();
-        return res.status(200).json({
-            message: "Followed Successfully",
-        })
+        return res.status(200).json(user)
     }catch(err){
         return next({
             status: 400,
@@ -120,9 +118,7 @@ exports.unfollow = async function(req,res,next){
         let following = await db.user.findById(f_id);
         following.followers.remove(id);
         await following.save();
-        return res.status(200).json({
-            message: "Unfollowed Successfully",
-        })
+        return res.status(200).json(user)
     }catch(err){
         return next({
             status: 400,

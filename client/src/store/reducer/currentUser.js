@@ -8,7 +8,6 @@ export default (state=defaultState,action)=>{
     switch(action.type){
         case ADD_USER:
             return {
-                ...state,
                 isAuthenticated: !!Object.keys(action.userData),
                 userDetail:action.userData,
             }

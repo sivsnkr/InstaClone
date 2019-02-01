@@ -1,13 +1,16 @@
 import React,{Component} from "react";
 import {FetchAllUsers} from "../store/actions/currentUser";
 import {connect} from "react-redux";
-import { runInThisContext } from "vm";
+import {follow,unfollow} from "../store/actions/currentUser";
 export class AllUsers extends Component{
     constructor(props){
         super(props);
         this.state = {
             users: [],
         }
+    }
+    handleClick = (e,id,f_id)=>{
+
     }
     render(){
         FetchAllUsers()
@@ -22,8 +25,8 @@ export class AllUsers extends Component{
                     <h2>{user}</h2>
                     {
                         this.props.user.userDetail.following.indexOf(user._id) > 0?(
-                            <button className="btn btn-danger">Unfollow</button>
-                        ):(<button className="btn btn-success">Follow</button>)
+                            <button onClick={(e)=>this.handleClick(e,this.props.user.userDetail._id,user._id)} className="btn btn-danger" name="unfollow">Unfollow</button>
+                        ):(<button onClick={(e)=>this.handleClick(e,this.props.user.userDetail._id,user._id)} name="follow" className="btn btn-success">Follow</button>)
                     }
                 </div>
             )

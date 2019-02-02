@@ -50,7 +50,6 @@ code {
   flex-direction: column;
   width: 350px;
   margin-bottom: 30px;
-  overflow: scroll;
   padding-right: 40px;
 }
 .post-bottom{

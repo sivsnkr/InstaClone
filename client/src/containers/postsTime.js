@@ -7,8 +7,16 @@ export class PostTime extends Component{
         this.props.fetchPosts(this.props.user.userDetail._id);
     }
     render(){
-        const {post,deletePost} = this.props;
-        const {username,_id} = this.props.user.userDetail;
+        let {post,deletePost} = this.props;
+        const {username,_id,following} = this.props.user.userDetail;
+        post = post.filter(post=>{
+            if(following.indexOf(post.creator)>=0||_id===post.creator){
+                return true;
+            }
+            else{
+                return false;
+            }
+        });
         const posts = post.map(post=>{
             return <RenderPost 
                 key={post._id}

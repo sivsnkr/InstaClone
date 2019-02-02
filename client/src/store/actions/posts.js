@@ -50,7 +50,6 @@ export const addNewPost = function(id,data){
         return new Promise((resolve,reject)=>{
             return apiCall("post",`/api/user/${id}/post`,data)
                     .then(res=>{
-                        console.log(res);
                         dispatch(addPost(res));
                         dispatch(removeError());
                         return resolve(res);

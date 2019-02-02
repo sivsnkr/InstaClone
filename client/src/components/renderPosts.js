@@ -13,6 +13,10 @@ export class RenderPost extends Component{
                     <div style={{marginRight:"40px"}}>{likes} <strong>Likes</strong></div>
                     <div>{comments}<strong> Comments</strong></div>
                 </div>
+                <div className="like-comment">
+                    <div className="like">Like</div>
+                    <div className="comment">Comment</div>
+                </div>
             </div>
         )
     }

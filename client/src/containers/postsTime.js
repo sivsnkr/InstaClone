@@ -1,10 +1,15 @@
 import React,{Component} from "react";
 import { connect } from "react-redux";
 import {RenderPost} from "../components/renderPosts";
-import {fetchPosts,deletePost} from "../store/actions/posts";
+import {fetchPosts,deletePost,likeAndUnlikePost} from "../store/actions/posts";
 export class PostTime extends Component{
     componentDidMount(){
         this.props.fetchPosts(this.props.user.userDetail._id);
+    }
+    likeAndUnlikePost = (e,p_id,id)=>{
+        e.preventDefault();
+        //some action will go here
+        this.props.likeAndUnlikePost(id,p_id,e.target.name);
     }
     render(){
         let {post,deletePost} = this.props;
@@ -24,11 +29,12 @@ export class PostTime extends Component{
                 pId={post._id}
                 url={post.url}
                 username={username}
-                likes={post.likes.length}
+                likes={post.likes}
                 comments={post.comments.length}
                 creator={post.creator}
                 caption={post.caption}
                 deletePost = {deletePost}
+                likeAndUnlikePost={this.likeAndUnlikePost}
                 />
         })
         return(
@@ -46,4 +52,4 @@ const mapStateToProps = function(state){
     }
 }
 
-export default connect(mapStateToProps,{fetchPosts,deletePost})(PostTime);
+export default connect(mapStateToProps,{fetchPosts,deletePost,likeAndUnlikePost})(PostTime);

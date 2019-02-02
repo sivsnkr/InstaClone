@@ -60,3 +60,19 @@ export const addNewPost = function(id,data){
             })
     }
 }
+
+export const likeAndUnlikePost = function(id,p_id,type){
+    return dispatch=>{
+        return new Promise((resolve,reject)=>{
+            return apiCall('get',`/api/user/${id}/post/${p_id}/${type}`).then(res=>{
+                dispatch(removePost(res._id));
+                dispatch(addPost(res));
+                dispatch(removeError());
+                return resolve(res);
+            }).catch(err=>{
+                dispatch(addError(err));
+                return reject(err);
+            })
+        })
+    }
+}

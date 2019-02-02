@@ -14,8 +14,8 @@ export class RenderPost extends Component{
                     <div>{comments}<strong> Comments</strong></div>
                 </div>
                 <div className="like-comment">
-                    <div className="like">Like</div>
-                    <div className="comment">Comment</div>
+                    <div className="like"><button className="btn btn-success">Like</button></div>
+                    <div className="comment"><button className="btn btn-primary disabled">Comment</button></div>
                 </div>
             </div>
         )

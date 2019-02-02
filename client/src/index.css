@@ -65,7 +65,7 @@ code {
   justify-content: space-between;
 }
 
-.all-messages{
+.all-messages,.like-comment{
   display: flex;
   flex-direction: row;
   justify-content: space-between;

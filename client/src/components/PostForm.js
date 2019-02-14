@@ -1,43 +1,35 @@
-import React,{Component} from "react";
+import React,{useState} from "react";
 
-export class PostForm extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            url:"",
-            caption:""
-        }
+export function PostForm(props){
+    const [url,setUrl] = useState("");
+    const [caption,setCaption] = useState("");
+    function changeUrl(e){
+        setUrl(e.target.value);
     }
-    handleChange = e=>{
-        this.setState({
-            [e.target.name] : e.target.value,
-        })
+    function changeCaption(e){
+        setCaption(e.target.value);
     }
-    handleSubmit = e=>{
+    function handleSubmit(e){
         e.preventDefault();
-        //after submit function will run here
-        this.props.addNewPost(this.props.id,this.state)
+        props.addNewPost(props.id,{url,caption})
         .then(res=>{
-            this.props.history.push("/");
+            props.history.push("/");
         })
     }
-    render(){
-        const {url,caption} = this.state;
-        return(
-            <div className="AuthForm">
-                <h1>New Post</h1>
-                <form onSubmit={this.handleSubmit}>
-                    <div className="form-group">
-                        <label htmlFor="url">Url</label>
-                        <input type="text" className="form-control" name="url" vlaue={url} onChange={this.handleChange} id="url" placeholder="Paste Your Post URL here" size="50"/>
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="caption">Caption</label>
-                        <input type="text" className="form-control" name="caption" vlaue={caption} onChange={this.handleChange} id="caption" placeholder="Enter Caption"/>
-                    </div>
-                    <button type="submit" className="btn btn-primary">Post</button>
-                </form>
-            </div>
-        )
-    }
+    return(
+        <div className="AuthForm">
+            <h1>New Post</h1>
+            <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <label htmlFor="url">Url</label>
+                    <input type="text" className="form-control" name="url" vlaue={url} onChange={changeUrl} id="url" placeholder="Paste Your Post URL here" size="50"/>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="caption">Caption</label>
+                    <input type="text" className="form-control" name="caption" vlaue={caption} onChange={changeCaption} id="caption" placeholder="Enter Caption"/>
+                </div>
+                <button type="submit" className="btn btn-primary">Post</button>
+            </form>
+        </div>
+    )
 }

@@ -2,21 +2,21 @@ import React from "react";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import logo from "../Images/instagram-logo.png";
-import {logout} from "../store/actions/currentUser";
-import instanav_logo from "../Images/instanav_logo.png";
+// import {logout} from "../store/actions/currentUser";
+// import instanav_logo from "../Images/instanav_logo.png";
 export const Navbar = function(props){
-    const {isAuthenticated} = props;
+    //const {isAuthenticated} = props;
     return (
-        <div class="navbar-personal">
-            <div class="navbar-logo">
-                <img style={{width:"30px",height: "30px"}}src={logo}></img>
+        <div className="navbar-personal">
+            <div className="navbar-logo">
+                <img style={{width:"30px",height: "30px"}}src={logo} alt="instagram"></img>
             </div>
             <div className="insta-header"><Link style={{textDecoration:"none",color:"black"}}to="/">Instagram</Link></div>
             <input className="navbar-search" type="text" placeholder="Search"></input>
             <div className="other-menu-items">
-                <i class="far fa-compass"></i>
-                <i class="far fa-heart"></i>
-                <i class="far fa-user"></i>
+                <Link to="/all_users" style={{color:"black",marginRight:"20px",textDecoration:"none"}}><i className="far fa-compass"></i></Link>
+                <Link to="/" style={{color:"black",marginRight:"20px",textDecoration:"none"}}><i className="far fa-heart"></i></Link>
+                <Link to="/user" style={{color:"black",marginRight:"20px",textDecoration:"none"}}><i className="far fa-user"></i></Link>
             </div>
         </div>
         // <nav className="navbar navbar-expand-lg navbar-light bg-light">

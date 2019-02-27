@@ -1,6 +1,5 @@
 import React from "react";
 import PostTime from "../containers/postsTime";
-import UserProfile from "../containers/userProfile";
 export const HomePage = function(props){
     const {isAuthenticated} = props;
     return(
@@ -8,11 +7,6 @@ export const HomePage = function(props){
             <div className="post_body">
                 {isAuthenticated&&
                     <PostTime/>
-                }
-            </div>
-            <div className="profile">
-                {isAuthenticated&&
-                    <UserProfile/>
                 }
             </div>
         </div>

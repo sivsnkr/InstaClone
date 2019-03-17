@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 
-export function PostForm(props){
+export const PostForm = function PostForm(props){
     const [url,setUrl] = useState("");
     const [caption,setCaption] = useState("");
     function changeUrl(e){
@@ -33,3 +33,4 @@ export function PostForm(props){
         </div>
     )
 }
+

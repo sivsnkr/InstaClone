@@ -123,6 +123,10 @@ const styles = theme => ({
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
   },
+  drawerContent: {
+    margin: '5px auto',
+    fontSize: '1.2em',
+  },
   content: {
     flexGrow: 1,
     padding: theme.spacing.unit * 3,
@@ -308,41 +312,43 @@ class Navbar extends React.Component {
                 {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                 </IconButton>
             </div>
-            {isAuthenticated?
-            (
-                <ul className="navbar-nav mr-auto">
-                    <li className="nav-item">
-                        <Link to="/sent_messages" style={{color:"#808080",marginRight:"20px",textDecoration:"none"}}>Sent Messages</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link to="/recived_messages" style={{color:"#808080",marginRight:"20px",textDecoration:"none"}}>Recived Messages</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link to="/new_message" style={{color:"#808080",marginRight:"20px",textDecoration:"none"}}>New Message</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link to="/new_post"style={{color:"#808080",marginRight:"20px",textDecoration:"none"}}>New Post</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link to="/all_users" style={{color:"#808080",marginRight:"20px",textDecoration:"none"}}>All Users</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link to="/user" style={{color:"#808080",marginRight:"20px",textDecoration:"none"}}>Profile</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link to="/" onClick={()=>logout()} style={{color:"#808080",marginRight:"20px",textDecoration:"none"}}>Log Out</Link>
-                    </li>
-                </ul>):(
+            <div className={classes.drawerContent}>
+                {isAuthenticated?
+                (
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item">
-                            <Link to="/signup"style={{color:"#808080",marginRight:"20px",textDecoration:"none"}}>Sign Up</Link>
+                            <Link to="/sent_messages" style={{color:"black",textDecoration:"none"}}>Sent Messages</Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/signin"style={{color:"#808080",marginRight:"20px",textDecoration:"none"}}>Log In</Link>
+                            <Link to="/recived_messages" style={{color:"black",textDecoration:"none"}}>Recived Messages</Link>
                         </li>
-                    </ul>
-                )
-            }
+                        <li className="nav-item">
+                            <Link to="/new_message" style={{color:"black",textDecoration:"none"}}>New Message</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/new_post"style={{color:"black",textDecoration:"none"}}>New Post</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/all_users" style={{color:"black",textDecoration:"none"}}>All Users</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/user" style={{color:"black",textDecoration:"none"}}>Profile</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/" onClick={()=>logout()} style={{color:"#808080",textDecoration:"none"}}>Log Out</Link>
+                        </li>
+                    </ul>):(
+                        <ul className="navbar-nav mr-auto">
+                            <li className="nav-item">
+                                <Link to="/signup"style={{color:"#808080",marginRight:"20px",textDecoration:"none"}}>Sign Up</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="/signin"style={{color:"#808080",marginRight:"20px",textDecoration:"none"}}>Log In</Link>
+                            </li>
+                        </ul>
+                    )
+                }
+            </div>
         </Drawer>
       </div>
     );

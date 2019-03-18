@@ -17,8 +17,8 @@ code {
 .HomePage{
   display: flex;
   width:100%;
-  height: 93vh;
   flex-direction: row;
+  margin-top: 100px;
   justify-content: space-between;
 }
 
@@ -35,6 +35,7 @@ code {
   flex-direction: column;
   align-items: center;
   width: 100%;
+  margin-top: 100px;
 }
 
 .userProfile{

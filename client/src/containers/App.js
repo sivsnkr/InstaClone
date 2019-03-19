@@ -20,7 +20,9 @@ class App extends Component {
         <Router>
           <div className="App">
             <Navbar/>
-            <Main/>
+            <div className="main">
+              <Main/>
+            </div>
           </div>
         </Router>
       </Provider>

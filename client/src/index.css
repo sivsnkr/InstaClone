@@ -13,12 +13,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
+.main{
+  margin-top: 100px;
+}
 .HomePage{
   display: flex;
   width:100%;
   flex-direction: row;
-  margin-top: 100px;
   justify-content: space-between;
 }
 
@@ -35,7 +36,6 @@ code {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin-top: 100px;
 }
 
 .userProfile{
@@ -49,7 +49,6 @@ code {
   display: flex;
   flex-direction: column;
   width: 350px;
-  margin-bottom: 30px;
   padding-right: 40px;
 }
 .post-bottom{
@@ -95,43 +94,6 @@ code {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-}
-
-.navbar-personal{
-  width: 100%;
-  border-bottom: 1px solid grey;
-  display: flex;
-  justify-content: space-between;
-  height: 70px;
-  padding-right: 15%;
-  background-color: white;
-  /* font-size: 1.5em; */
-  color: black;
-}
-
-.navbar-logo{
-  margin-top: 15px;
-  height: 55%;
-  border-right: 1px solid black;
-  padding-right: 20px;
-  margin-right: 10px;
-  margin-left: 17%;
-  font-size: 1.5em;
-}
-
-.navbar-search{
-  text-align:center;
-  border: 1px solid grey;
-  border-radius: 20px;
-  outline: none;
-  width: 40%;
-  margin: 20px 40px;
-}
-
-.insta-header{
-  display: flex;
-  align-items: center;
-  font-size: 1.5em;
 }
 
 .other-menu-items{
